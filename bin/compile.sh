@@ -192,6 +192,7 @@ cd $BUILD_DIR
 status "Fetching Swift packages and parsing Package.swift files..."
 if [ $(is_swift_version_greater_or_equal_to 4.0) == "true" ]; then
   export KITURA_NIO=1
+  ulimit -c unlimited
   swift package resolve | indent
 else
   swift package fetch | indent
